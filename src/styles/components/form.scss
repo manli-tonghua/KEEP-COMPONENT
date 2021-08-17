@@ -1,0 +1,13 @@
+$form-prefix: $css-prefix+'-form';
+
+.#{$form-prefix} {
+  .#{$form-prefix}-item-field {
+    width: 100%;
+  }
+}
+
+.#{$form-prefix}-inline {
+  .#{$form-prefix}-item-field {
+    width: 220px;
+  }
+}

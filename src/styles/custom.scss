@@ -1,0 +1,23 @@
+$css-prefix: mo;
+
+.#{$css-prefix}-flex {
+  display: flex;
+}
+
+.#{$css-prefix}-fill {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.#{$css-prefix}-fix {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.#{$css-prefix}-action {
+  margin: 0 -5px;
+
+  .#{$css-prefix}-action-item {
+    margin:0 5px;
+  }
+}

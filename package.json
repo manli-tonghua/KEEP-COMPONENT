@@ -1,0 +1,23 @@
+{
+  "name": "keep-component",
+  "version": "1.0.0",
+  "description": "keep-mo-component",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "peerDependencies": {
+    "view-design": "^4.6.1",
+    "sass-loader": "^7.1.0",
+    "vue": "^2.6.10"
+  },
+  "author": "houfengjiao",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/cli": "^4.5.13"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.5.13"
+  }
+}
