@@ -7,7 +7,7 @@ $form-prefix: $css-prefix+'-form';
 }
 
 .#{$form-prefix}-inline {
-  .#{$form-prefix}-item-field {
-    width: 220px;
+  .#{$form-prefix}-item {
+    width: 100%;
   }
 }

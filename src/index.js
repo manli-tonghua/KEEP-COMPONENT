@@ -1,9 +1,19 @@
 import './styles/index.scss'
 
 import MoCheckbox from './components/Checkbox'
+import MoFormItem from './components/FormItem'
+import MoForm from './components/Form'
+import MoQueryForm from './components/QueryForm'
+import MoListPage from './components/ListPage'
+import MoList from './components/List'
 
 const vui = {
-  MoCheckbox
+  MoCheckbox,
+  MoFormItem,
+  MoForm,
+  MoQueryForm,
+  MoListPage,
+  MoList
 }
 
 const install = (Vue) => {

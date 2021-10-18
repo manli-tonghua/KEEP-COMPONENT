@@ -1,0 +1,7 @@
+$list-prefix: $css-prefix+'-list';
+
+.#{$list-prefix} {
+  .#{$list-prefix}-action {
+    margin-right: 5px;
+  }
+}

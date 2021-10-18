@@ -1,0 +1,13 @@
+$listpage-prefix: $css-prefix+'-list-page';
+
+.#{$listpage-prefix}-head {
+  margin-bottom: 16px;
+}
+.#{$listpage-prefix}-title {
+  color: #464c5b;
+  font-size: 16px;
+  font-weight: bold;
+}
+.#{$listpage-prefix}-btn {
+  margin-right: 5px;
+}

@@ -8,7 +8,7 @@ export default {
   },
   render: (h, ctx) => {
     if(ctx.props.name==='test'){
-      console.log(ctx,'cccccccccccc')
+      console.log(ctx)
     }
     if (ctx.props.root && ctx.props.root.$scopedSlots[ctx.props.name]) {
       return ctx.props.root.$scopedSlots[ctx.props.name](ctx.props.data)

@@ -1,0 +1,6 @@
+$action-prefix: $css-prefix+'-action';
+
+.#{$action-prefix} {
+  width: 100%;
+  text-align: left;
+}
