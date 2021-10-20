@@ -1,16 +1,42 @@
 <template>
   <div class="listpage">
-    <mo-list :columns="columns" :data="data1">
-      <template #age="{row}">{{row.age+ '___hhh'}}</template>
-    </mo-list>
-    <!-- <mo-list-page :listOption='listOption'></mo-list-page> -->
+    <mo-list-page :listOption='listOption' :queryOption='queryOption' :queryVal='queryVal' @on-query="query">
+      <template #test><Input type="text" placeholder="哈哈哈哈" /></template>
+      <template #rightActions>hhhhh</template>
+    </mo-list-page>
   </div>
 </template>
 <script>
 export default {
   data(){
     return {
-      columns: [{
+      queryVal: {}, 
+      paging: {
+        total: 100,
+        pageNo: 1,
+        pageSize: 10,
+      },
+      listOption: {
+        pageTitle: '页面标题',
+        actions: {
+          TR: [{
+            name:'下载',
+            handler:this.handle,
+            options:{
+              attrs:{
+                type: 'primary',
+                icon: 'md-download'
+              }
+        },},{
+            name:'导出'}
+          ]
+        },
+        paging: {
+          pageNo: 1,
+          pageSize: 10,
+          total:100
+        },
+        columns: [{
                         title: 'Name',
                         key: 'name'
                     },
@@ -19,24 +45,26 @@ export default {
                         slot: 'age'
                     },
                     {
-                        title: 'Address',
+                        title: '操作',
                         type: 'action',
                         actions: [
                           {
                             name: '操作1',
+                            handler: this.handle,
+                            show: (row) => row.age === 18,
                             attrs: {
                               type: 'success'
                             }
                           },{
-                            name: '操作1',
+                            name: '操作2',
                             attrs: {
-                              type: 'success'
+                              type: 'primary'
                             }
                           }
                         ],
                         
                     }],
-       data1: [
+       data: [
                     {
                         name: 'John Brown',
                         age: 18,
@@ -62,26 +90,101 @@ export default {
                         date: '2016-10-04'
                     }
                 ],
-      listOption: {
-        actions: {
-          TR: [{
-            name:'下载',
-            handler:this.handle,
-            options:{
-              attrs:{
-                type: 'primary',
-                icon: 'md-download'
-              }
-        },},{
-            name:'导出'}
-          ]
+      },
+      queryOption: {
+        schema: [
+        {key: 'skuName',
+        // label: '输入框',
+        type: 'input',
+        // attrs: {
+        //   labelWidth:140,
+        // },
+        options: {
+            attrs: {
+              clearable: false,
+              placeholder: '请输入商品名称',
+            }
+          }
+        },
+        {key: 'skuName2',
+        // label: '输入框2',
+        type: 'input',
+        options: {
+            clearable: false
+          }
+        },
+        {key: 'skuName3',
+        // label: '输入框',
+        type: 'input',
+        options: {
+            clearable: false
+          }
+        },
+        {key: 'skuName3',
+        // label: '输入框',
+        type: 'input',
+        options: {
+            clearable: false
+          }
+        },
+        {key: 'skuName3',
+        // label: '输入框',
+        type: 'input',
+        options: {
+            clearable: false
+          }
+        },
+        {
+          key: 'shop',
+          // label: '店铺:',
+          type: 'select',
+          options: {
+              items: [{
+              code: '1',
+              name: 'keep自有渠道'
+            }]
+          }
+        },{
+          key: 'shop',
+          // label: '店铺:',
+          type: 'select',
+          options: {
+              items: [{
+              code: '1',
+              name: 'keep自有渠道'
+            }]
+          }
+        },{
+          key: 'time',
+          type: 'date',
+          options: {
+            attrs: {
+              placeholder: '时间',
+              // clearable: false
+            }
+          }
+        },
+        {
+          key: 'timeRange',
+          type: 'daterange',
+          options: {
+            attrs: {
+              placeholder: '时间起始',
+              // clearable: false
+            }
+          }
+        },
+        {
+          label: 'slot',
+          slot: 'test'
         }
+      ]
       }
     }
   },
   methods: {
-    handle() {
-      console.log('ddd')
+    query (queryParams) {
+      console.log(queryParams,'q')
     }
   }
 }

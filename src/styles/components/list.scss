@@ -4,4 +4,8 @@ $list-prefix: $css-prefix+'-list';
   .#{$list-prefix}-action {
     margin-right: 5px;
   }
+  .#{$list-prefix}-page {
+    text-align: right;
+    margin-top: 16px;
+  }
 }

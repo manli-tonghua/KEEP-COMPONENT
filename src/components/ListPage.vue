@@ -1,7 +1,7 @@
 <template>
   <Card>
     <Row type="flex" justify="space-between" align="middle" :class="`${prefixCls}-list-page-head`">
-      <Col :class="`${prefixCls}-list-page-title`">店铺管理</Col>
+      <Col :class="`${prefixCls}-list-page-title`">{{ listOption.pageTitle }}</Col>
       <Col>
         <mo-slot name="rightActions" :root="root" v-if="listOption.actions.TR">
           <template v-for="(item,index) in listOption.actions.TR">
@@ -17,20 +17,21 @@
     <query-form v-bind="queryOption"
                 v-model="queryVal"
                 @on-query="query(1)"></query-form>
-     <Page :current.sync="pageIndex"
-           :page-size="pageSize"
-           :total="total"
-           v-bind="attrs"
-           @on-page-size-change="changePageSize"
-           @on-change="pageChange"/>
+    <list v-bind="listOpts"
+          @on-page-size-change="changePageSize" 
+          @on-change="changePage"
+          ></list>
+     
   </Card>
 </template>
 
 <script>
 import mixins from '../mixins/moMixin'
 import QueryForm from './QueryForm.vue'
+import List from './List.vue'
+import moment from 'moment'
 export default {
-  components: { QueryForm },
+  components: { QueryForm, List},
   mixins: [mixins],
   props: {
     attrs: {
@@ -40,6 +41,23 @@ export default {
     queryVal: Object,
     queryOption: Object,
     listOption: Object,
+  },
+  data () {
+    return {
+      realPageSize: 10
+    }
+  },
+  computed: {
+    listOpts () {
+      return Object.assign({
+        actions: {},
+        data: [],
+        columns: []
+      }, this.listOption)
+    }
+  },
+  mounted() {
+    this.realPageSize = this.listOpts.paging.pageSize
   },
   methods: {
     actionHandle(source) {
@@ -52,7 +70,26 @@ export default {
     },
     query(pageNo) {
       this.queryParams = Object.assign({}, this.queryVal)
-
+      if(this.listOpts.paging) {
+        this.queryParams.pageSize = this.realPageSize
+        this.queryParams.pageNo = pageNo
+        this.listOpts.paging.current = pageNo
+      }
+      if(this.queryVal.time){
+        this.queryParams.timeFormat = moment(this.queryVal.time).valueOf()
+      }
+      if(this.queryVal.timeRange && this.queryVal.timeRange.length === 2 && this.queryVal.timeRange[0] !== '') {
+        this.queryParams.startTime = moment(this.queryVal.timeRange[0]).valueOf()
+        this.queryParams.endTime = moment(this.queryVal.timeRange[1]).valueOf()
+      }
+      this.$emit('on-query', this.queryParams)
+    },
+    changePage (page) {
+      this.query(page)
+    },
+    changePageSize (pageNum) {
+      this.realPageSize = pageNum
+      this.query(1)
     }
   }
 }

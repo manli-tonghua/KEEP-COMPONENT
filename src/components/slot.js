@@ -7,8 +7,8 @@ export default {
     data: Object
   },
   render: (h, ctx) => {
-    if(ctx.props.name==='test'){
-      console.log(ctx)
+    if(ctx.props.name==='query_btns'){
+      console.log(ctx,444)
     }
     if (ctx.props.root && ctx.props.root.$scopedSlots[ctx.props.name]) {
       return ctx.props.root.$scopedSlots[ctx.props.name](ctx.props.data)

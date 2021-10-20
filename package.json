@@ -10,12 +10,14 @@
   "peerDependencies": {
     "view-design": "^4.6.1",
     "sass-loader": "^7.1.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "moment": "^2.24.0"
   },
   "author": "houfengjiao",
   "license": "ISC",
   "dependencies": {
     "@vue/cli": "^4.5.13",
+    "moment": "^2.29.1",
     "sass-loader": "^12.1.0",
     "view-design": "^4.6.1",
     "vue": "^2.6.14"
