@@ -1,18 +1,26 @@
-import { prefixCls } from '../config'
-import MoSlot from '../components/slot'
+import { prefixCls } from "../config";
+import MoSlot from "../components/slot";
 
 export default {
   props: {
     root: {
-      type: Object
-    }
+      type: Object,
+      default() {
+        return this;
+      },
+    },
   },
   components: {
-    MoSlot
+    MoSlot,
   },
-  data () {
+  data() {
     return {
-      prefixCls
-    }
-  }
-}
+      prefixCls,
+    };
+  },
+  computed: {
+    rootCom() {
+      return this.root || this;
+    },
+  },
+};
