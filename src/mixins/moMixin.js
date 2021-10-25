@@ -20,6 +20,7 @@ export default {
   },
   computed: {
     rootCom() {
+      console.log('dddddddddd')
       return this.root || this;
     },
   },

@@ -6,9 +6,11 @@
       :queryVal="queryVal"
       @on-query="query"
     >
-      <template #age><Input type="text" placeholder="哈哈哈哈"/></template>
+      <template #test><Input type="text" v-model="queryVal.slotVal" placeholder="哈哈哈哈"/></template>
+      <template #age="{row}">{{ row.age + 'aaa' }}</template>
       <template #rightActions>hhhhh</template>
     </mo-list-page>
+    {{ queryVal }}
   </div>
 </template>
 <script>
@@ -68,6 +70,8 @@ export default {
               },
               {
                 name: "操作2",
+                isConfirm: true,
+                handler: this.handle,
                 attrs: {
                   type: "primary",
                 },
@@ -205,6 +209,9 @@ export default {
     };
   },
   methods: {
+    handle(row) {
+      console.log(row)
+    },
     query(queryParams) {
       console.log(queryParams, "q");
     },

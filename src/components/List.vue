@@ -16,7 +16,18 @@
                     :data="{row, index, item}"
                     :key="index">
             </mo-slot>
-            <template v-else>
+            <template v-else-if="item.isConfirm">
+              <Poptip
+                :key="index"
+                confirm
+                transfer
+                :title="item.confirmText ? item.confirmText : '是否确认操作？'"
+                @on-ok="actionHandle(item,row)"
+              ><Button :class="`${listCls}-action`"
+                      size="small"
+                      v-bind="item.attrs">{{ item.name }}</Button></Poptip>
+            </template>
+            <template v-else> 
               <Button :class="`${listCls}-action`"
                       :key="index"
                       size="small"
