@@ -2,27 +2,35 @@
   "name": "keep-component",
   "version": "1.0.0",
   "description": "keep-mo-component",
-  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "./src/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build --target lib --name iview-page src/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
-    "view-design": "^4.6.1",
+    "moment": "^2.24.0",
     "sass-loader": "^7.1.0",
-    "vue": "^2.6.10",
-    "moment": "^2.24.0"
+    "view-design": "^4.6.1",
+    "vue": "^2.6.10"
   },
   "author": "houfengjiao",
   "license": "ISC",
   "dependencies": {
     "@vue/cli": "^4.5.13",
-    "moment": "^2.29.1",
-    "sass-loader": "^12.1.0",
+    "@vue/cli-service": "^4.5.13",
+    "moment": "^2.24.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^7.1.0",
+    "user": "0.0.0",
     "view-design": "^4.6.1",
-    "vue": "^2.6.14"
-  },
-  "devDependencies": {
-    "@vue/cli-service": "^4.5.13"
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.14"
   }
 }

@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
-import vui from '../../src/index'
+import vui from '../../dist/iview-page.umd.js'
+import '../../dist/iview-page.css'
 
 Vue.use(ViewUI)
 Vue.use(vui)
