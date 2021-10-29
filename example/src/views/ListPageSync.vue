@@ -18,89 +18,44 @@ export default {
   data() {
     return {
       queryVal: {},
-      listOption: {
-        pageTitle: "页面标题",
-        actions: {
-          TR: [
+      paging: {
+        total: 100,
+        pageNo: 1,
+        pageSize: 10,
+      },
+      listData: [],
+      columns: [
+        {
+          title: "Name",
+          key: "name",
+        },
+        {
+          title: "Age",
+          slot: "age",
+        },
+        {
+          title: "操作",
+          type: "action",
+          actions: [
             {
-              name: "下载",
+              name: "操作1",
               handler: this.handle,
-              options: {
-                attrs: {
-                  type: "primary",
-                  icon: "md-download",
-                },
+              show: (row) => row.age === 18,
+              attrs: {
+                type: "success",
               },
             },
             {
-              name: "导出",
+              name: "操作2",
+              isConfirm: true,
+              handler: this.handle,
+              attrs: {
+                type: "primary",
+              },
             },
           ],
         },
-        paging: {
-          pageNo: 1,
-          pageSize: 10,
-          total: 100,
-        },
-        columns: [
-          {
-            title: "Name",
-            key: "name",
-          },
-          {
-            title: "Age",
-            slot: "age",
-          },
-          {
-            title: "操作",
-            type: "action",
-            actions: [
-              {
-                name: "操作1",
-                handler: this.handle,
-                show: (row) => row.age === 18,
-                attrs: {
-                  type: "success",
-                },
-              },
-              {
-                name: "操作2",
-                isConfirm: true,
-                handler: this.handle,
-                attrs: {
-                  type: "primary",
-                },
-              },
-            ],
-          },
-        ],
-        data: [
-          {
-            name: "John Brown",
-            age: 18,
-            address: "New York No. 1 Lake Park",
-            date: "2016-10-03",
-          },
-          {
-            name: "Jim Green",
-            age: 24,
-            address: "London No. 1 Lake Park",
-            date: "2016-10-01",
-          },
-          {
-            name: "Joe Black",
-            age: 30,
-            address: "Sydney No. 1 Lake Park",
-            date: "2016-10-02",
-          },
-          {
-            name: "Jon Snow",
-            age: 26,
-            address: "Ottawa No. 2 Lake Park",
-            date: "2016-10-04",
-          },
-        ],
-      },
+      ],
       queryOption: {
         schema: [
           {
@@ -203,12 +158,50 @@ export default {
       },
     };
   },
+  computed: {
+    listOption() {
+      let opt = {
+        pageTitle: "页面标题",
+        actions: {
+          TR: [
+            {
+              name: "下载",
+              handler: this.handle,
+              options: {
+                attrs: {
+                  type: "primary",
+                  icon: "md-download",
+                },
+              },
+            },
+            {
+              name: "导出",
+            },
+          ],
+        },
+        data: this.listData,
+        columns: this.columns,
+        paging: this.paging
+      }
+      return opt
+    }
+  },
   methods: {
     handle(row) {
       console.log(row)
     },
     query(queryParams) {
-      console.log(queryParams, "q");
+      setTimeout(() => {
+        this.listData = [
+          {
+            name: "John Brown",
+            age: 18,
+            address: "New York No. 1 Lake Park",
+            date: "2016-10-03",
+          }
+        ]
+        console.log(this.listOption)  // 点击查询按钮 打印出来的值 listData已赋值，但是视图没有更新！！
+      }, 100);
     },
   },
 };

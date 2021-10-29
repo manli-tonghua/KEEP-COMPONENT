@@ -1,6 +1,6 @@
 {
   "name": "keep-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "keep-mo-component",
   "publishConfig": {
     "access": "public",
@@ -12,7 +12,7 @@
     "build": "vue-cli-service build --target lib --name iview-page src/index.js"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "peerDependencies": {
     "moment": "^2.24.0",

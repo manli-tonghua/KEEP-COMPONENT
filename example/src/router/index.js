@@ -27,6 +27,11 @@ const routes = [
     path: '/listpage',
     name: 'ListPage',
     component: () => import(/* webpackChunkName: "about" */ '../views/ListPage.vue')
+  },
+  {
+    path: '/listpageSync',
+    name: 'listpageSync',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ListPageSync.vue')
   }
 ]
 
